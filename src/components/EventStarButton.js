@@ -1,4 +1,5 @@
 import './EventStarButton.css'
+import { useMemo } from 'react';
 
 const EventStarButton = (props) => {
     // this is the same as
@@ -35,6 +36,27 @@ const EventStarButton = (props) => {
             return !previousValue;
         });
     };
+
+    // This function isn't currently used -- it's the approach
+    // that would stop unnecessary re-rendering of EVERY button
+    // after starring one event.
+    // useMemo is advanced... you won't need to know this for anything
+    // you're graded on, but thought it might be of interest.
+    // to use this instead change this in return()-
+    //<div>{getStarMessage()}</div>
+    //to
+    //<div>️{theStarMessage}</div>
+    // (no parentheses as it the 'useMemo' already returns the
+    // value needed )
+    const theStarMessage = useMemo(() => {
+        if (tossedOverIsStarred) {
+            return 'U GOT STAR' + Date.now();
+        } else {
+            return 'add star' + Date.now();
+        }
+    }, [tossedOverIsStarred])
+    // In the line above, we're saying "don't re-compute theStarMessage"
+    // unless `tossedOverIsStarred` in THIS component has changed value.
 
     return (
       <button onClick={starButtonHandler} className={tossedOverIsStarred ? 'starred' : 'not-starred'}>
