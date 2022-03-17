@@ -2,13 +2,12 @@ import './EventsListing.css';
 import EventDateTime from "./EventDateTime";
 import EventInfo from "./EventInfo";
 import EventInstance from "./EventInstance";
+import StarredEvents from "./StarredEvents";
+import { useState } from 'react';
 
 const EventsListing = (props) => {
-    // This is in the console so you can see that when App passes in
-    // events as <EventsListing events={events} />, that `events`
-    // data is here in props.events.
-    console.log('THE PROPS', props);
 
+    const [starredEvents, setStarredEvents] = useState([]);
     /**
      * Creates an array where each item is the JSX "markup" for an event.
      *
@@ -22,7 +21,11 @@ const EventsListing = (props) => {
         // If React sees an array of JSX "markup", it will render each one.
         props.events.forEach((eventInstance, index) =>
             // Add an event's "markup" to the eventsToShow array.
-            eventsToShow.push(<EventInstance key={index}>
+            eventsToShow.push(
+                <EventInstance
+                    setStarredEvents={setStarredEvents}
+                    key={index}
+                    title={eventInstance.event_title}>
                     <EventDateTime
                         dateStart={eventInstance.date_start}
                         timeStart={eventInstance.time_start}
@@ -41,16 +44,19 @@ const EventsListing = (props) => {
         // function (so `props.events.map()`), but that can be harder to read
         // for those not used to it, so we're using forEach() and push() instead.
     }
-
+    console.log(starredEvents, []);
     if (props.events.length > 0) {
         return (
-            <div className='events'>
-                {/*
-               The events "markup" is generated in a function (above)
-               to make this return statement easier to read.
-            */}
-                {generateEvents()}
-            </div>
+            <>
+                <StarredEvents starredList={starredEvents} />
+                <div className='events'>
+                    {/*
+                   The events "markup" is generated in a function (above)
+                   to make this return statement easier to read.
+                */}
+                    {generateEvents()}
+                </div>
+            </>
         );
     } else {
         return <h2 className='events--loading'>LOADING!!!!</h2>

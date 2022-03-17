@@ -24,6 +24,7 @@ const EventInstance = (props) => {
         <EventStarButton
             tossedOverIsStarred={isStarred}
             handMeDownSetStarStateFunction={setIsStarred}
+            { ...props }
         />
     </div>
 }
