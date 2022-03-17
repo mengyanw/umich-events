@@ -1,4 +1,4 @@
-# WHERE WE LEFT OFF AFTER LECTURE 16
+# Completed Umich Events App
 
 ### `npm install`
 installs the dependencies
