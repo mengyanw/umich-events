@@ -30,7 +30,6 @@ const CreateEventForm = (props) => {
             console.log('the start', theStartTime)
             props.setUmichEvents((currentEvents) => {
                 return [
-                    ...currentEvents,
                     {
                         event_title: theTitle,
                         description: theDescription,
@@ -38,6 +37,7 @@ const CreateEventForm = (props) => {
                         time_start: `${theStartTime}:00`,
                         time_end: `${theEndTime}:00`,
                     },
+                    ...currentEvents,
                 ];
             });
 
