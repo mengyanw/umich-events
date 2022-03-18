@@ -21,11 +21,12 @@ const EventDateTime = (props) => {
         <div className='event__start-end'>
             {/*
                 We are calling convert() on timeStart and timeEnd props to
-                change the umich default format to AM/PM
+                change the Umich default format to AM/PM
             */}
             { convert(props.timeStart) }-{ convert(props.timeEnd)}
         </div>
     </div>);
 }
 
+// As always, we must export so others can import!
 export default EventDateTime;

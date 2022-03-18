@@ -13,4 +13,5 @@ const EventInfo = (props) => {
     </div>)
 }
 
+// As always, we must export so others can import!
 export default EventInfo;

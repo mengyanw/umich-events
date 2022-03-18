@@ -6,13 +6,10 @@ import StarredEvents from "./StarredEvents";
 import { useState } from 'react';
 
 const EventsListing = (props) => {
-
+    // This state is an array of every event we starred.
     const [starredEvents, setStarredEvents] = useState([]);
-    /**
-     * Creates an array where each item is the JSX "markup" for an event.
-     *
-     * @returns {*[]}
-     */
+
+    // Creates an array where each item is the JSX "markup" for an event.
     const generateEvents = () => {
         // Initialize an empty array that will get each event
         const eventsToShow = [];
@@ -43,9 +40,16 @@ const EventsListing = (props) => {
         // What is happening here could be done more concisely with JavaScripts's map()
         // function (so `props.events.map()`), but that can be harder to read
         // for those not used to it, so we're using forEach() and push() instead.
+        // Check the end of this file for how it would be done the map way
     }
-    console.log(starredEvents, []);
+
     if (props.events.length > 0) {
+        // Notice the `<>` and `</>`? Those are fragments. React requires
+        // the returned JSX to be wrapped in a single tag at the top. If you
+        // want multiple components next to each other, you could wrap them in a
+        // <div> OR use fragments, which take care of the wrapping, but don't add
+        // any HTML to the final render
+        // @see https://reactjs.org/docs/fragments.html
         return (
             <>
                 <StarredEvents starredList={starredEvents} />
@@ -63,4 +67,28 @@ const EventsListing = (props) => {
     }
 }
 
+// As always, we must export so others can import!
 export default EventsListing;
+
+/**
+ * Below is a version of generateEvents() that uses map()
+ * multiple items. It's more concise, but more confusing
+ * for newer React users. It would look like this:
+ *
+ * const generateEvents = () => props.events.map((eventInstance, index) =>
+ *                  <EventInstance
+ *                     setStarredEvents={setStarredEvents}
+ *                     key={index}
+ *                     title={eventInstance.event_title}>
+ *                     <EventDateTime
+ *                         dateStart={eventInstance.date_start}
+ *                         timeStart={eventInstance.time_start}
+ *                         timeEnd={eventInstance.time_end}
+ *                     />
+ *                    <EventInfo
+ *                        title={eventInstance.event_title}
+ *                        description={eventInstance.description}
+ *                    />
+ *                 </EventInstance>
+ * )
+ */

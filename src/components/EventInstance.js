@@ -21,6 +21,10 @@ const EventInstance = (props) => {
           EventStarButton so that component can change that state in a way that communicates the
           change back to this component
         */}
+        {/* Notice that ...props at the end? that means we pass EVERY prop from 👆 this
+            component down to EventStarButton, we don't have to pass each prop
+            individually.
+        */}
         <EventStarButton
             tossedOverIsStarred={isStarred}
             handMeDownSetStarStateFunction={setIsStarred}
@@ -29,4 +33,5 @@ const EventInstance = (props) => {
     </div>
 }
 
+// As always, we must export so others can import!
 export default EventInstance;

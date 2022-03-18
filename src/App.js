@@ -30,7 +30,11 @@ function App() {
         <h1>Events at University of Michigan</h1>
         <CreateEventForm setUmichEvents={setUmichEvents} />
         {/*  <EventsListing /> is a self-closing "tag" that generates the list of events */}
-        {/*  We are adding `events` as a prop that gets passed to EventsListing */}
+        {/*  We are adding the state `umichEvents` as a prop that gets passed to EventsListing.
+             because it is state, any time `umichEvents` changes, the <EventsListing> will
+             re-render.
+        */}
+
         <EventsListing events={umichEvents} />
       </main>
   );

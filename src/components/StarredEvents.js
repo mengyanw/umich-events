@@ -3,14 +3,19 @@ import './StarredEvents.css'
 const StarredEvents = (props) => {
     // This is equivalent to:
     // const starredList = props.starredList;
-    console.log('props in starred events', props);
     const { starredList } = props;
+    // 👆 starredList is state from its parent component, so when that
+    // list changes, this component is automatically re-rendered.
 
+    // Helper function to generate the starred list or
+    // 'No starred events' message. It's a function here to
+    // make the JSX in return() easier to read.
     const starredEventsOutput = () => {
         if (starredList.length === 0) {
             return 'No starred events';
         } else {
-
+            // Use join() to combine every starred item into a comma
+            // separated list.
             return starredList.join(', ')
         }
     }
