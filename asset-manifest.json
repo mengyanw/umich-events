@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/umich-events/static/css/main.841e62ac.css",
+    "main.js": "/umich-events/static/js/main.f0f53f1e.js",
+    "static/js/787.a5c1028c.chunk.js": "/umich-events/static/js/787.a5c1028c.chunk.js",
+    "index.html": "/umich-events/index.html",
+    "main.841e62ac.css.map": "/umich-events/static/css/main.841e62ac.css.map",
+    "main.f0f53f1e.js.map": "/umich-events/static/js/main.f0f53f1e.js.map",
+    "787.a5c1028c.chunk.js.map": "/umich-events/static/js/787.a5c1028c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.841e62ac.css",
+    "static/js/main.f0f53f1e.js"
+  ]
+}
